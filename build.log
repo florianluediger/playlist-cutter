@@ -31,9 +31,9 @@ Compiled successfully.
 
 File sizes after gzip:
 
-  275.97 kB (+719 B)  build/static/js/main.5aaec054.js
-  2.68 kB             build/static/js/496.7a1c6413.chunk.js
-  2.42 kB             build/static/css/main.a3750ecf.css
+  275.97 kB  build/static/js/main.5aaec054.js
+  2.68 kB    build/static/js/496.7a1c6413.chunk.js
+  2.42 kB    build/static/css/main.a3750ecf.css
 
 The project was built assuming it is hosted at /playlist-cutter/.
 You can control this with the homepage field in your package.json.
