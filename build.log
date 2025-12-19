@@ -3,9 +3,6 @@
 > react-app-rewired build
 
 Creating an optimized production build...
-Browserslist: caniuse-lite is outdated. Please run:
-  npx browserslist@latest --update-db
-  Why you should do it regularly: https://github.com/browserslist/browserslist#browsers-data-updating
 TypeError: Cannot set property mark of #<Object> which has only a getter
 TypeError: Cannot set property mark of #<Object> which has only a getter
     at Object.connectTypeScriptPerformance (/Users/florianludiger/repositories/private/playlist-cutter/node_modules/fork-ts-checker-webpack-plugin/lib/typescript-reporter/profile/TypeScriptPerformance.js:12:36)
@@ -30,16 +27,13 @@ TypeError: Cannot set property mark of #<Object> which has only a getter
     at /Users/florianludiger/repositories/private/playlist-cutter/node_modules/fork-ts-checker-webpack-plugin/lib/reporter/reporter-rpc/ReporterRpcService.js:19:88
     at Object.<anonymous> (/Users/florianludiger/repositories/private/playlist-cutter/node_modules/fork-ts-checker-webpack-plugin/lib/rpc/RpcService.js:23:38)
     at Generator.next (<anonymous>)
-Browserslist: caniuse-lite is outdated. Please run:
-  npx browserslist@latest --update-db
-  Why you should do it regularly: https://github.com/browserslist/browserslist#browsers-data-updating
 Compiled successfully.
 
 File sizes after gzip:
 
-  229.17 kB  build/static/js/main.159f7818.js
-  2.38 kB    build/static/css/main.80469c15.css
-  1.79 kB    build/static/js/787.b6322d69.chunk.js
+  225.42 kB  build/static/js/main.995faf62.js
+  2.42 kB    build/static/css/main.a3750ecf.css
+  1.78 kB    build/static/js/787.df3a3a4d.chunk.js
 
 The project was built assuming it is hosted at /playlist-cutter/.
 You can control this with the homepage field in your package.json.
