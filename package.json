@@ -10,10 +10,6 @@
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.2.0",
     "@testing-library/user-event": "^14.2.0",
-    "@types/jest": "^27.4.1",
-    "@types/node": "^16.11.26",
-    "@types/react": "^17.0.43",
-    "@types/react-dom": "^17.0.14",
     "autoprefixer": "^10.4.4",
     "buffer": "^6.0.3",
     "crypto-browserify": "^3.12.0",
@@ -28,7 +24,6 @@
     "stream-browserify": "^3.0.0",
     "swr": "^1.2.2",
     "tailwindcss": "^3.0.23",
-    "typescript": "^4.6.3",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
@@ -58,8 +53,13 @@
     ]
   },
   "devDependencies": {
+    "@types/jest": "^30.0.0",
+    "@types/node": "^25.0.3",
+    "@types/react": "^19.2.7",
+    "@types/react-dom": "^19.2.3",
     "prettier": "^2.6.2",
     "react-app-rewired": "^2.2.1",
-    "react-test-renderer": "^18.1.0"
+    "react-test-renderer": "^18.1.0",
+    "typescript": "^5.9.3"
   }
 }
