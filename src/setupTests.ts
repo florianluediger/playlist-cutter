@@ -4,7 +4,5 @@
 // learn more: https://github.com/testing-library/jest-dom
 import '@testing-library/jest-dom';
 
-// Mock SVG imports to avoid React 19 compatibility issues with SVGR
-jest.mock('./knife.svg', () => ({
-  ReactComponent: 'svg'
-}));
+// Vitest doesn't need SVG mocking like Jest did
+// SVG imports work natively with Vite

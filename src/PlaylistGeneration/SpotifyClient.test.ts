@@ -1,11 +1,12 @@
 import {addTracksToPlaylist, createPlaylist, fetchTracks} from "./SpotifyClient";
 import spotifyConfig from "../config/spotify-config.json";
+import { vi } from 'vitest';
 
-global.fetch = jest.fn();
+global.fetch = vi.fn();
 
 describe("addTracksToPlaylist", () => {
     it("creates correct request", async () => {
-        (fetch as jest.Mock).mockResolvedValue({ok: true})
+        (fetch as any).mockResolvedValue({ok: true})
         const tracks = ["track1", "track2", "track3"];
         const playlistId = "playlistId";
         const accessToken = "accessToken";
@@ -24,7 +25,7 @@ describe("addTracksToPlaylist", () => {
     })
 
     it("adds tracks in two batches when input contains more than 50 elements", async () => {
-        (fetch as jest.Mock).mockResolvedValue({ok: true})
+        (fetch as any).mockResolvedValue({ok: true})
 
         const tracks = Array.from({length: 60}, (_, x) => `track${x}`)
         const playlistId = "playlistId";
@@ -52,7 +53,7 @@ describe("addTracksToPlaylist", () => {
     })
 
     it("throws error when fetch does not return ok", async () => {
-        (fetch as jest.Mock).mockResolvedValue({ok: false})
+        (fetch as any).mockResolvedValue({ok: false})
         const tracks = ["track1", "track2", "track3"];
         const playlistId = "playlistId";
         const accessToken = "accessToken";
@@ -63,7 +64,7 @@ describe("addTracksToPlaylist", () => {
 
 describe("createPlaylist", () => {
     it("throws error when user id request does not return ok", async () => {
-        (fetch as jest.Mock).mockResolvedValueOnce({ok: false})
+        (fetch as any).mockResolvedValueOnce({ok: false})
 
         const name = "name";
         const accessToken = "accessToken";
@@ -73,11 +74,11 @@ describe("createPlaylist", () => {
 
     it("throws error when playlist creation request does not return ok", async () => {
         const playlistId = "playlistId";
-        (fetch as jest.Mock).mockResolvedValueOnce({
+        (fetch as any).mockResolvedValueOnce({
             ok: true,
             json: () => Promise.resolve({id: playlistId})
         });
-        (fetch as jest.Mock).mockResolvedValueOnce({ok: false});
+        (fetch as any).mockResolvedValueOnce({ok: false});
 
         const name = "name";
         const accessToken = "accessToken";
@@ -88,11 +89,11 @@ describe("createPlaylist", () => {
     it("creates correct request", async () => {
         const userId = "userId";
         const playlistId = "playlistId";
-        (fetch as jest.Mock).mockResolvedValueOnce({
+        (fetch as any).mockResolvedValueOnce({
             ok: true,
             json: () => Promise.resolve({id: userId})
         });
-        (fetch as jest.Mock).mockResolvedValueOnce({
+        (fetch as any).mockResolvedValueOnce({
             ok: true,
             json: () => Promise.resolve({id: playlistId})
         });
@@ -122,7 +123,7 @@ describe("createPlaylist", () => {
 
 describe("fetchTracks", () => {
     it("throws error when track fetching request does not return ok", async () => {
-        (fetch as jest.Mock).mockResolvedValueOnce({ok: false});
+        (fetch as any).mockResolvedValueOnce({ok: false});
 
         const playlists = ["playlist1", "playlist2"];
         const accessToken = "accessToken";
@@ -132,7 +133,7 @@ describe("fetchTracks", () => {
 
     it("fetches two batches of tracks", async () => {
         const urlOfSecondBatch = "urlOfSecondBatch";
-        (fetch as jest.Mock).mockResolvedValueOnce({
+        (fetch as any).mockResolvedValueOnce({
             ok: true,
             json: () => Promise.resolve({
                 items: [{track: {uri: "list1track1"}}, {track: {uri: "list1track2"}}, {track: {uri: "list1track3"}}],
@@ -140,7 +141,7 @@ describe("fetchTracks", () => {
             })
         });
 
-        (fetch as jest.Mock).mockResolvedValueOnce({
+        (fetch as any).mockResolvedValueOnce({
             ok: true,
             json: () => Promise.resolve({
                 items: [{track: {uri: "list1track4"}}, {track: {uri: "list1track5"}}],
@@ -148,7 +149,7 @@ describe("fetchTracks", () => {
             })
         });
 
-        (fetch as jest.Mock).mockResolvedValueOnce({
+        (fetch as any).mockResolvedValueOnce({
             ok: true,
             json: () => Promise.resolve({
                 items: [{track: {uri: "list2track1"}}, {track: {uri: "list2track2"}}],
