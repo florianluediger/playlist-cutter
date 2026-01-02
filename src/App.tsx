@@ -5,7 +5,7 @@ import { RootRoute } from "./RootRoute";
 import oauthConfig from "./config/oauth-config.json";
 
 const authService = new AuthService({
-  clientId: process.env.REACT_APP_CLIENT_ID || oauthConfig.CLIENT_ID,
+  clientId: import.meta.env.VITE_CLIENT_ID || oauthConfig.CLIENT_ID,
   location: window.location,
   provider: oauthConfig.OAUTH_PROVIDER,
   redirectUri: window.location.origin + "/playlist-cutter",
