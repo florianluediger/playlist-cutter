@@ -3,16 +3,17 @@ import PlaylistCreationForm from "./PlaylistCreationForm";
 import {useAuth} from "react-oauth2-pkce";
 import {emptyPlaylistGenerationInput, PlaylistGenerationInput} from "../ContentBase/PlaylistGenerationInput";
 import {usePlaylists} from "./usePlaylists";
+import { vi } from 'vitest';
 
-jest.mock("react-oauth2-pkce", () => {
+vi.mock("react-oauth2-pkce", () => {
     return {
-        useAuth: jest.fn()
+        useAuth: vi.fn()
     }
 })
 
-jest.mock("./usePlaylists", () => {
+vi.mock("./usePlaylists", () => {
     return {
-        usePlaylists: jest.fn()
+        usePlaylists: vi.fn()
     }
 })
 
@@ -66,11 +67,16 @@ let playlistExampleData = {
     error: null
 };
 
-let triggerGeneration = jest.fn();
+let triggerGeneration = vi.fn();
+
+beforeEach(() => {
+    vi.clearAllMocks();
+    triggerGeneration = vi.fn();
+});
 
 it("populates data and triggers generation", () => {
-    (useAuth as jest.Mock).mockReturnValue(successfulUseAuthResult);
-    (usePlaylists as jest.Mock).mockReturnValue(playlistExampleData);
+    (useAuth as any).mockReturnValue(successfulUseAuthResult);
+    (usePlaylists as any).mockReturnValue(playlistExampleData);
 
     let playlistGenerationInput = emptyPlaylistGenerationInput();
     let setPlaylistGenerationInput = (updatedValue: PlaylistGenerationInput) => {
@@ -109,7 +115,7 @@ it("populates data and triggers generation", () => {
 })
 
 it("shows an error when user is not authenticated", () => {
-    (useAuth as jest.Mock).mockReturnValue({
+    (useAuth as any).mockReturnValue({
         authService: {
             isAuthenticated: () => {
                 return false
@@ -119,14 +125,14 @@ it("shows an error when user is not authenticated", () => {
 
     render(<PlaylistCreationForm triggerGeneration={triggerGeneration}
                                  playlistGenerationInput={emptyPlaylistGenerationInput()}
-                                 setPlaylistGenerationInput={jest.fn()}/>);
+                                 setPlaylistGenerationInput={vi.fn()}/>);
 
     expect(screen.getByText("Please log in")).toBeInTheDocument();
 })
 
 it("paints input border red when no name is specified at button click", () => {
-    (useAuth as jest.Mock).mockReturnValue(successfulUseAuthResult);
-    (usePlaylists as jest.Mock).mockReturnValue(playlistExampleData);
+    (useAuth as any).mockReturnValue(successfulUseAuthResult);
+    (usePlaylists as any).mockReturnValue(playlistExampleData);
 
     let playlistGenerationInput = emptyPlaylistGenerationInput();
     let setPlaylistGenerationInput = (updatedValue: PlaylistGenerationInput) => {
