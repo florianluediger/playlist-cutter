@@ -1,5 +1,5 @@
 import {GenerationStatus} from "./GenerationStatus";
-import {ReactComponent as Knife} from "../knife.svg";
+import Knife from "../knife.svg?react";
 
 export function PlaylistGeneration({
                                        generationStatus
