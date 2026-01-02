@@ -1,15 +1,13 @@
 
-added 117 packages, removed 1160 packages, changed 55 packages, and audited 439 packages in 34s
+> playlist-cutter@0.1.0 build
+> vite build
 
-89 packages are looking for funding
-  run `npm fund` for details
-
-13 vulnerabilities (3 low, 4 moderate, 4 high, 2 critical)
-
-To address issues that do not require attention, run:
-  npm audit fix
-
-To address all issues (including breaking changes), run:
-  npm audit fix --force
-
-Run `npm audit` for details.
+vite v4.5.14 building for production...
+✓ 0 modules transformed.
+✓ built in 4ms
+Could not resolve entry module "index.html".
+error during build:
+RollupError: Could not resolve entry module "index.html".
+    at error (file:///Users/florianludiger/repositories/private/playlist-cutter/node_modules/vite/node_modules/rollup/dist/es/shared/node-entry.js:2287:30)
+    at ModuleLoader.loadEntryModule (file:///Users/florianludiger/repositories/private/playlist-cutter/node_modules/vite/node_modules/rollup/dist/es/shared/node-entry.js:24881:20)
+    at async Promise.all (index 0)
