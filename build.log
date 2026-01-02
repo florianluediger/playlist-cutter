@@ -7,7 +7,7 @@ transforming...
 
 A PostCSS plugin did not pass the `from` option to `postcss.parse`. This may cause imported assets to be incorrectly transformed. If you've recently added a PostCSS plugin that raised this warning, please contact the package author to fix the issue.
 node_modules/vm-browserify/index.js (110:11) Use of eval in "node_modules/vm-browserify/index.js" is strongly discouraged as it poses security risks and may cause issues with minification.
-✓ 587 modules transformed.
+✓ 588 modules transformed.
 rendering chunks...
 computing gzip size...
 build/index.html                          0.77 kB │ gzip:   0.41 kB
@@ -16,10 +16,10 @@ build/assets/spotify_icon-72c4f97f.png   16.26 kB
 build/assets/spotify_logo-30562af9.png   47.59 kB
 build/assets/index-8372446f.css           5.89 kB │ gzip:   2.26 kB
 build/assets/web-vitals-60d3425a.js       4.31 kB │ gzip:   1.68 kB
-build/assets/index-d7d96369.js          928.27 kB │ gzip: 267.39 kB
+build/assets/index-08192f43.js          928.09 kB │ gzip: 267.36 kB
 
 (!) Some chunks are larger than 500 kBs after minification. Consider:
 - Using dynamic import() to code-split the application
 - Use build.rollupOptions.output.manualChunks to improve chunking: https://rollupjs.org/configuration-options/#output-manualchunks
 - Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
-✓ built in 2.23s
+✓ built in 2.32s
