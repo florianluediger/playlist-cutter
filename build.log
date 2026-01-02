@@ -1,5 +1,19 @@
 
 > playlist-cutter@0.1.0 test
-> react-app-rewired test
+> vitest --run
 
-sh: react-app-rewired: command not found
+
+ RUN  v0.34.6 /Users/florianludiger/repositories/private/playlist-cutter
+
+ ✓ src/PlaylistGeneration/PlaylistGenerator.test.ts  (1 test) 3ms
+ ✓ src/PlaylistGeneration/SpotifyClient.test.ts  (8 tests) 5ms
+ ✓ src/PlaylistCreationForm/PlaylistListItem.test.tsx  (1 test) 34ms
+ ✓ src/PlaylistCreationForm/PlaylistList.test.tsx  (5 tests) 47ms
+ ✓ src/PlaylistCreationForm/PlaylistCreationForm.test.tsx  (3 tests) 60ms
+ ✓ src/PlaylistGeneration/PlaylistGeneration.test.tsx  (4 tests) 23ms
+
+ Test Files  6 passed (6)
+      Tests  22 passed (22)
+   Start at  13:36:53
+   Duration  766ms (transform 284ms, setup 243ms, collect 636ms, tests 172ms, environment 1.26s, prepare 463ms)
+
