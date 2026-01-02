@@ -75,8 +75,8 @@ describe("PlaylistList", () => {
     });
 
     it("renders list of checkbox items and calls setCheckedList when checking a checkbox", () => {
-        (useAuth as any).mockReturnValue(useAuthResult);
-        (usePlaylists as any).mockReturnValue(successfulUsePlaylistResult);
+        useAuth.mockReturnValue(useAuthResult);
+        usePlaylists.mockReturnValue(successfulUsePlaylistResult);
 
         let checkedPlaylists = ["plist3Id"];
         let setCheckedList = vi.fn();
@@ -100,8 +100,8 @@ describe("PlaylistList", () => {
     })
 
     it("renders list of checkbox items and calls setCheckedList when unchecking a checkbox", () => {
-        (useAuth as any).mockReturnValue(useAuthResult);
-        (usePlaylists as any).mockReturnValue(successfulUsePlaylistResult);
+        useAuth.mockReturnValue(useAuthResult);
+        usePlaylists.mockReturnValue(successfulUsePlaylistResult);
 
         let checkedPlaylists = ["plist3Id"];
         let setCheckedList = vi.fn();
@@ -126,7 +126,7 @@ describe("PlaylistList", () => {
     })
 
     it("renders error when an error occurs while fetching playlists", () => {
-        (useAuth as any).mockReturnValue(useAuthResult);
+        useAuth.mockReturnValue(useAuthResult);
         let usePlaylistsResult = {
             playlists: null,
             error: {
@@ -134,7 +134,7 @@ describe("PlaylistList", () => {
                 message: "An error occurred while fetching playlists"
             }
         };
-        (usePlaylists as any).mockReturnValue(usePlaylistsResult);
+        usePlaylists.mockReturnValue(usePlaylistsResult);
 
         let setCheckedList = vi.fn();
 
@@ -147,7 +147,7 @@ describe("PlaylistList", () => {
     })
 
     it("renders error and performs logout when an error 401 occurs while fetching playlists", () => {
-        (useAuth as any).mockReturnValue(useAuthResult);
+        useAuth.mockReturnValue(useAuthResult);
         let usePlaylistsResult = {
             playlists: null,
             error: {
@@ -155,7 +155,7 @@ describe("PlaylistList", () => {
                 message: "An error occurred while fetching playlists"
             }
         };
-        (usePlaylists as any).mockReturnValue(usePlaylistsResult);
+        usePlaylists.mockReturnValue(usePlaylistsResult);
 
         let setCheckedList = vi.fn();
 
@@ -168,12 +168,12 @@ describe("PlaylistList", () => {
     })
 
     it("renders loading message when no playlists found", () => {
-        (useAuth as any).mockReturnValue(useAuthResult);
+        useAuth.mockReturnValue(useAuthResult);
         let usePlaylistsResult = {
             playlists: null,
             error: null
         };
-        (usePlaylists as any).mockReturnValue(usePlaylistsResult);
+        usePlaylists.mockReturnValue(usePlaylistsResult);
 
         let setCheckedList = vi.fn();
 

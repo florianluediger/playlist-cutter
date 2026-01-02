@@ -21,9 +21,9 @@ it("generates playlist when input is correct", async () => {
     const excludeTracks = ["track3", "track4"];
     const resultingTracks = ["track1", "track2"];
     const playlistId = "playlistId";
-    (fetchTracks as any).mockResolvedValueOnce(includeTracks);
-    (fetchTracks as any).mockResolvedValueOnce(excludeTracks);
-    (createPlaylist as any).mockResolvedValueOnce(playlistId)
+    fetchTracks.mockResolvedValueOnce(includeTracks);
+    fetchTracks.mockResolvedValueOnce(excludeTracks);
+    createPlaylist.mockResolvedValueOnce(playlistId)
 
     await generatePlaylist(includePlaylists, excludePlaylists, name, accessToken, setGenerationStatus);
 

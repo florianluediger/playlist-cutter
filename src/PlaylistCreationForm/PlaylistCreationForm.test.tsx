@@ -75,8 +75,8 @@ beforeEach(() => {
 });
 
 it("populates data and triggers generation", () => {
-    (useAuth as any).mockReturnValue(successfulUseAuthResult);
-    (usePlaylists as any).mockReturnValue(playlistExampleData);
+    useAuth.mockReturnValue(successfulUseAuthResult);
+    usePlaylists.mockReturnValue(playlistExampleData);
 
     let playlistGenerationInput = emptyPlaylistGenerationInput();
     let setPlaylistGenerationInput = (updatedValue: PlaylistGenerationInput) => {
@@ -115,7 +115,7 @@ it("populates data and triggers generation", () => {
 })
 
 it("shows an error when user is not authenticated", () => {
-    (useAuth as any).mockReturnValue({
+    useAuth.mockReturnValue({
         authService: {
             isAuthenticated: () => {
                 return false
@@ -131,8 +131,8 @@ it("shows an error when user is not authenticated", () => {
 })
 
 it("paints input border red when no name is specified at button click", () => {
-    (useAuth as any).mockReturnValue(successfulUseAuthResult);
-    (usePlaylists as any).mockReturnValue(playlistExampleData);
+    useAuth.mockReturnValue(successfulUseAuthResult);
+    usePlaylists.mockReturnValue(playlistExampleData);
 
     let playlistGenerationInput = emptyPlaylistGenerationInput();
     let setPlaylistGenerationInput = (updatedValue: PlaylistGenerationInput) => {
