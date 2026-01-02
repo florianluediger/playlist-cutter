@@ -8,7 +8,7 @@ const authService = new AuthService({
   clientId: import.meta.env.VITE_CLIENT_ID || oauthConfig.CLIENT_ID,
   location: window.location,
   provider: oauthConfig.OAUTH_PROVIDER,
-  redirectUri: window.location.origin + "/playlist-cutter",
+  redirectUri: window.location.origin + "/playlist-cutter/",
   tokenEndpoint: oauthConfig.TOKEN_PROVIDER,
   scopes: [
     "playlist-modify-private",
