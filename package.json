@@ -3,6 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "homepage": "https://florianluediger.github.io/playlist-cutter",
+  "engines": {
+    "node": ">=22.x"
+  },
   "dependencies": {
     "@testing-library/jest-dom": "^6.1.5",
     "@testing-library/react": "^13.2.0",
