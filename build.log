@@ -5,20 +5,18 @@
 [33mThe CJS build of Vite's Node API is deprecated. See https://vite.dev/guide/troubleshooting.html#vite-cjs-node-api-deprecated for more details.[39m
 vite v5.4.21 building for production...
 transforming...
-
-A PostCSS plugin did not pass the `from` option to `postcss.parse`. This may cause imported assets to be incorrectly transformed. If you've recently added a PostCSS plugin that raised this warning, please contact the package author to fix the issue.
-✓ 577 modules transformed.
+✓ 564 modules transformed.
 node_modules/vm-browserify/index.js (110:11): Use of eval in "node_modules/vm-browserify/index.js" is strongly discouraged as it poses security risks and may cause issues with minification.
 rendering chunks...
 computing gzip size...
 build/index.html                          0.78 kB │ gzip:   0.41 kB
 build/assets/spotify_icon-Bv4JJAf1.png   16.26 kB
 build/assets/spotify_logo-CWNAd0FK.png   47.59 kB
-build/assets/index-CimgqHC0.css           5.89 kB │ gzip:   2.26 kB
-build/assets/index-CYEAVMa6.js          940.41 kB │ gzip: 270.83 kB
+build/assets/index-Dhg7ESIk.css           7.53 kB │ gzip:   2.37 kB
+build/assets/index-tNPBnGbD.js          934.11 kB │ gzip: 270.22 kB
 
 (!) Some chunks are larger than 500 kB after minification. Consider:
 - Using dynamic import() to code-split the application
 - Use build.rollupOptions.output.manualChunks to improve chunking: https://rollupjs.org/configuration-options/#output-manualchunks
 - Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
-✓ built in 2.17s
+✓ built in 2.14s
