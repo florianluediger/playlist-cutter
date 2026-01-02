@@ -1,12 +1,12 @@
 import {generatePlaylist} from "./PlaylistGenerator";
 import {addTracksToPlaylist, createPlaylist, fetchTracks} from "./SpotifyClient";
+import { vi } from 'vitest';
 
-
-jest.mock("./SpotifyClient", () => {
+vi.mock("./SpotifyClient", () => {
     return {
-        createPlaylist: jest.fn(),
-        fetchTracks: jest.fn(),
-        addTracksToPlaylist: jest.fn()
+        createPlaylist: vi.fn(),
+        fetchTracks: vi.fn(),
+        addTracksToPlaylist: vi.fn()
     }
 });
 
@@ -15,15 +15,15 @@ it("generates playlist when input is correct", async () => {
     const excludePlaylists = ["exclude"];
     const name = "name"
     const accessToken = "accessToken"
-    const setGenerationStatus = jest.fn();
+    const setGenerationStatus = vi.fn();
 
     const includeTracks = ["track1", "track2", "track3"];
     const excludeTracks = ["track3", "track4"];
     const resultingTracks = ["track1", "track2"];
     const playlistId = "playlistId";
-    (fetchTracks as jest.Mock).mockResolvedValueOnce(includeTracks);
-    (fetchTracks as jest.Mock).mockResolvedValueOnce(excludeTracks);
-    (createPlaylist as jest.Mock).mockResolvedValueOnce(playlistId)
+    fetchTracks.mockResolvedValueOnce(includeTracks);
+    fetchTracks.mockResolvedValueOnce(excludeTracks);
+    createPlaylist.mockResolvedValueOnce(playlistId)
 
     await generatePlaylist(includePlaylists, excludePlaylists, name, accessToken, setGenerationStatus);
 

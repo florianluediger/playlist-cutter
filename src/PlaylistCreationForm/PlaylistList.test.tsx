@@ -2,31 +2,24 @@ import {fireEvent, render, screen} from "@testing-library/react";
 import {PlaylistList} from "./PlaylistList";
 import {usePlaylists} from "./usePlaylists";
 import {useAuth} from "react-oauth2-pkce";
+import { vi } from 'vitest';
 
-jest.mock("react-oauth2-pkce", () => {
+vi.mock("react-oauth2-pkce", () => {
     return {
-        useAuth: jest.fn()
+        useAuth: vi.fn()
     }
 })
 
-jest.mock("./usePlaylists", () => {
+vi.mock("./usePlaylists", () => {
     return {
-        usePlaylists: jest.fn()
+        usePlaylists: vi.fn()
     }
 })
 
-global.alert = jest.fn()
+global.alert = vi.fn() as any;
 
-let logoutFunction = jest.fn();
-
-let useAuthResult = {
-    authService: {
-        getAuthTokens: () => {
-            return {access_token: "access_token"}
-        },
-        logout: logoutFunction
-    }
-};
+let logoutFunction: ReturnType<typeof vi.fn>;
+let useAuthResult: any;
 
 let successfulUsePlaylistResult = {
     playlists: [
@@ -68,12 +61,25 @@ let successfulUsePlaylistResult = {
 };
 
 describe("PlaylistList", () => {
+    beforeEach(() => {
+        vi.clearAllMocks();
+        logoutFunction = vi.fn();
+        useAuthResult = {
+            authService: {
+                getAuthTokens: () => {
+                    return {access_token: "access_token"}
+                },
+                logout: logoutFunction
+            }
+        };
+    });
+
     it("renders list of checkbox items and calls setCheckedList when checking a checkbox", () => {
-        (useAuth as jest.Mock).mockReturnValue(useAuthResult);
-        (usePlaylists as jest.Mock).mockReturnValue(successfulUsePlaylistResult);
+        useAuth.mockReturnValue(useAuthResult);
+        usePlaylists.mockReturnValue(successfulUsePlaylistResult);
 
         let checkedPlaylists = ["plist3Id"];
-        let setCheckedList = jest.fn();
+        let setCheckedList = vi.fn();
 
         render(
             <PlaylistList checkedPlaylists={checkedPlaylists} setCheckedList={setCheckedList}/>
@@ -94,11 +100,11 @@ describe("PlaylistList", () => {
     })
 
     it("renders list of checkbox items and calls setCheckedList when unchecking a checkbox", () => {
-        (useAuth as jest.Mock).mockReturnValue(useAuthResult);
-        (usePlaylists as jest.Mock).mockReturnValue(successfulUsePlaylistResult);
+        useAuth.mockReturnValue(useAuthResult);
+        usePlaylists.mockReturnValue(successfulUsePlaylistResult);
 
         let checkedPlaylists = ["plist3Id"];
-        let setCheckedList = jest.fn();
+        let setCheckedList = vi.fn();
 
         render(
             <PlaylistList checkedPlaylists={checkedPlaylists} setCheckedList={setCheckedList}/>
@@ -120,7 +126,7 @@ describe("PlaylistList", () => {
     })
 
     it("renders error when an error occurs while fetching playlists", () => {
-        (useAuth as jest.Mock).mockReturnValue(useAuthResult);
+        useAuth.mockReturnValue(useAuthResult);
         let usePlaylistsResult = {
             playlists: null,
             error: {
@@ -128,9 +134,9 @@ describe("PlaylistList", () => {
                 message: "An error occurred while fetching playlists"
             }
         };
-        (usePlaylists as jest.Mock).mockReturnValue(usePlaylistsResult);
+        usePlaylists.mockReturnValue(usePlaylistsResult);
 
-        let setCheckedList = jest.fn();
+        let setCheckedList = vi.fn();
 
         render(
             <PlaylistList checkedPlaylists={[]} setCheckedList={setCheckedList}/>
@@ -141,7 +147,7 @@ describe("PlaylistList", () => {
     })
 
     it("renders error and performs logout when an error 401 occurs while fetching playlists", () => {
-        (useAuth as jest.Mock).mockReturnValue(useAuthResult);
+        useAuth.mockReturnValue(useAuthResult);
         let usePlaylistsResult = {
             playlists: null,
             error: {
@@ -149,9 +155,9 @@ describe("PlaylistList", () => {
                 message: "An error occurred while fetching playlists"
             }
         };
-        (usePlaylists as jest.Mock).mockReturnValue(usePlaylistsResult);
+        usePlaylists.mockReturnValue(usePlaylistsResult);
 
-        let setCheckedList = jest.fn();
+        let setCheckedList = vi.fn();
 
         render(
             <PlaylistList checkedPlaylists={[]} setCheckedList={setCheckedList}/>
@@ -162,14 +168,14 @@ describe("PlaylistList", () => {
     })
 
     it("renders loading message when no playlists found", () => {
-        (useAuth as jest.Mock).mockReturnValue(useAuthResult);
+        useAuth.mockReturnValue(useAuthResult);
         let usePlaylistsResult = {
             playlists: null,
             error: null
         };
-        (usePlaylists as jest.Mock).mockReturnValue(usePlaylistsResult);
+        usePlaylists.mockReturnValue(usePlaylistsResult);
 
-        let setCheckedList = jest.fn();
+        let setCheckedList = vi.fn();
 
         render(
             <PlaylistList checkedPlaylists={[]} setCheckedList={setCheckedList}/>
