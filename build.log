@@ -22,4 +22,4 @@ build/assets/index-38a533fb.js          928.26 kB │ gzip: 267.39 kB
 - Using dynamic import() to code-split the application
 - Use build.rollupOptions.output.manualChunks to improve chunking: https://rollupjs.org/configuration-options/#output-manualchunks
 - Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
-✓ built in 2.13s
+✓ built in 2.24s
