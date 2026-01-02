@@ -1,5 +1,6 @@
 import {fireEvent, render, screen} from "@testing-library/react";
 import {PlaylistListItem} from "./PlaylistListItem";
+import { vi } from 'vitest';
 
 it("calls onChange method with correct parameters when checkbox is checked", () => {
     let plist = {
@@ -13,7 +14,7 @@ it("calls onChange method with correct parameters when checkbox is checked", () 
             total: 0
         }
     }
-    let onChange = jest.fn()
+    let onChange = vi.fn()
     render(
         <PlaylistListItem playlist={plist} onChange={onChange}/>
     )
